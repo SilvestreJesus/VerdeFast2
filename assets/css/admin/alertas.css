@@ -1,0 +1,168 @@
+@import url("/assets/css/common/global.css");
+@import url("/assets/css/common/animaciones.css");
+@import url("/assets/css/common/alertas.css");
+@import url("/assets/css/modules/header.css");
+
+body {
+    color: white;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.alertas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alertas-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search-bar {
+    background-color: #333333;
+    border-radius: 5px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    width: 250px;
+}
+
+.search-icon {
+    margin-right: 10px;
+    opacity: 0.7;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #999999;
+}
+
+.alertas-table-container {
+    background-color: #222222;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+.alertas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.alertas-table th,
+.alertas-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.alertas-table th {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.alertas-table tbody tr {
+    border-bottom: 1px solid #333333;
+}
+
+.alertas-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555555;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #5cb85c;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.edit-icon {
+    display: inline-block;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .alertas-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .search-bar {
+        width: 100%;
+    }
+    
+    .alertas-table th,
+    .alertas-table td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+}

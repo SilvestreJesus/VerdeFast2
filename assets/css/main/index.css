@@ -1,0 +1,129 @@
+@import url("/assets/css/common/global.css");
+@import url("/assets/css/common/animaciones.css");
+@import url("/assets/css/common/alertas.css");
+@import url("/assets/css/modules/header.css");
+
+body {
+    background-color: var(--oscuro);
+    color: white;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+a {
+    position: relative;
+    z-index: 1;
+}
+
+.landing-bg {
+    z-index: -3;
+    position: fixed;
+    width: 130dvw;
+    height: 130dvh;
+    background-image: url("/assets/img/index-bg.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(5px);
+    opacity: 0.5;
+}
+
+section.dato {
+    background-color: var(--oscuro-t);
+    padding: 30px;
+    border-radius: 20px;
+    min-height: fit-content;
+    width: 85%;
+    max-width: 90%;
+}
+
+section.dato .iconos {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+section.dato .iconos span {
+    font-size: 48px;
+}
+
+section .iconos span:nth-child(1) {
+    color: var(--primario);
+}
+
+section.dato .iconos span:nth-child(2) {
+    color: var(--warn);
+}
+
+section.dato .iconos span:nth-child(3) {
+    color: var(--info);
+}
+
+h1.verdefast {
+    font-size: 48px;
+    text-align: center;
+}
+
+.verde, .fast {
+    font-style: italic;
+}
+
+.pruebalo-ya {
+    font-size: 24px;
+}
+
+article.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 20px;
+    gap: 20px;
+}
+
+article.landing-container .botones {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.landing-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (640 <= width <= 960px) {
+}
+
+@media (960px <= width) {
+    .landing-bg {
+        height: 100dvh;
+        width: 100dvw;
+        top: 0;
+        left: 0;
+    }
+
+    h1.verdefast {
+        font-size: 72px;
+        width: 12ch;
+        text-align: left;
+        text-wrap: pretty;
+    }
+
+    article.landing-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 100dvh;
+        padding: 0;
+        gap: 0;
+    }
+
+    section.dato {
+        width: 25vw;
+        max-width: inherit;
+    }
+}

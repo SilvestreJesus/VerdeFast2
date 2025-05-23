@@ -1,0 +1,176 @@
+@import url('/assets/css/common/global.css');
+@import url('/assets/css/common/animaciones.css');
+@import url('/assets/css/common/alertas.css');
+@import url('/assets/css/modules/header.css');
+
+body {
+    background-color: var(--oscuro);
+    color: white;
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.helmet-icon {
+    width: 50px;
+    height: 35px;
+    background-color: white;
+    border-radius: 25px 25px 0 0;
+    position: relative;
+}
+
+.helmet-icon::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    background-color: white;
+    border-radius: 5px;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title-text {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.ticket-card {
+    display: flex;
+    background-color: #555555;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ticket-info {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.ticket-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ticket-address, .ticket-phone {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.ticket-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.action-button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.accept-button {
+    background-color: #5cb85c;
+}
+
+.reject-button {
+    background-color: #ff4136;
+}
+
+.check-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.check-icon::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+    top: -5px;
+    left: 5px;
+}
+
+.x-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.x-icon::before, .x-icon::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 25px;
+    background-color: white;
+    top: -2px;
+    left: 9px;
+}
+
+.x-icon::before {
+    transform: rotate(45deg);
+}
+
+.x-icon::after {
+    transform: rotate(-45deg);
+}
+
+a.boton-soporte {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 25px;
+    padding: 15px;
+    background-color: var(--gris-900);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+a.boton-soporte:hover {
+    background-color: var(--gris-800);
+}
+
+@media (max-width: 768px) {
+    .tickets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav {
+        gap: 10px;
+    }
+    
+    .nav-item {
+        font-size: 12px;
+    }
+}

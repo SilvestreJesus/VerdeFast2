@@ -1,0 +1,113 @@
+@import url("/assets/css/common/global.css");
+@import url("/assets/css/common/animaciones.css");
+@import url("/assets/css/common/alertas.css");
+@import url("/assets/css/modules/header.css");
+
+
+body {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+
+.icon {
+    width: 55px;
+    height: 55px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.registro-container {
+    width: 100%;
+    max-width: 900px;
+    margin-left: 20%;
+    padding: 30px;
+}
+
+.titulo {
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.campo-completo {
+    grid-column: span 1;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.etiqueta {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.input {
+    background-color: #777777;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px;
+    color: white;
+    font-size: 16px;
+}
+
+.salir {
+    justify-self: center;
+    grid-column: span 1;
+    width: 100%;
+}
+
+select.input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L0 3h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 30px;
+}
+
+@media (640px <= width <= 960px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (960px <= width) {
+    body {
+        
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr 1fr;
+        
+    }
+
+    .campo-completo {
+        grid-column: span 2;
+    }
+
+    .salir{
+        grid-column: span 2;
+
+    }
+}

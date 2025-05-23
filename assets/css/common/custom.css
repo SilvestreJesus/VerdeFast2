@@ -1,0 +1,115 @@
+@import url("/assets/css/common/global.css");
+
+/* Etiquetas modificadas */
+* { font-family: "Inter", system-ui, sans-serif; }
+
+html { color-scheme: dark; }
+
+body { background-color: var(--oscuro); }
+
+a { display: block; text-decoration: none; }
+
+button { border: none; }
+
+nav ul, nav ol { list-style: none; display: flex; }
+
+nav ul li, nav ol li { display: flex; align-items: center; }
+
+fieldset { border: none; }
+
+/* Elementos personalizados */
+.deg-primario {
+    background-image: linear-gradient(to right, var(--primario-800), var(--primario-200));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.verde { color: var(--primario); }
+
+.fast { color: var(--primario-100); }
+
+a.a { text-decoration: underline solid transparent; }
+
+a.a:hover { 
+    color: var(--primario-300); 
+    text-decoration-color: currentColor; 
+}
+
+a:has(span.material-symbols-outlined) {
+    gap: 2px;
+    overflow: hidden;
+}
+
+a:has(span.material-symbols-outlined):hover .material-symbols-outlined {
+    color: var(--primario-300);
+}
+
+a.boton, button.boton {
+    background-color: var(--alt-2-600);
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+    width: fit-content;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.boton:hover, button.boton:hover {
+    background-color: var(--alt-2);
+}
+
+a.boton-secundario, button.boton-secundario {
+    color: var(--gris);
+    background-color: var(--oscuro-t);
+    border-radius: 25px;
+    padding: 15px;
+    width: fit-content;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.boton-secundario:hover, button.boton-secundario:hover {
+    background-color: var(--oscuro-t-h);
+}
+
+::placeholder { color: var(--gris); }
+
+input, .input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--gris-700);
+    color: white;
+    font-size: 16px;
+}
+
+input:focus, .input:focus {
+    background-color: color-mix(in srgb, var(--primario-700) 50%, var(--gris-700));
+}
+
+input:focus ::placeholder, .input:focus ::placeholder {
+    color: var(--primario-200);
+}
+
+.input {
+    border-radius: 5px;
+}
+
+div.inputs fieldset {
+    position: relative;
+    margin: 10px 0;
+}
+
+div.inputs fieldset .material-symbols-outlined {
+    color: var(--gris-400);
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}

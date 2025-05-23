@@ -1,0 +1,150 @@
+@import url("/assets/css/common/global.css");
+@import url("/assets/css/common/animaciones.css");
+@import url("/assets/css/common/alertas.css");
+
+body {
+    opacity: 99.99%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+body div.bg {
+    z-index: -2;
+    opacity: 44%;
+    background-color: var(--gris-900);
+}
+
+body div.login-bg {
+    z-index: -3;
+    background-image: url("/assets/img/login-bg.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    filter: blur(5px);
+}
+
+body div.login-bg, body div.bg {
+    position: absolute;
+    top: -10;
+    left: -10;
+    width: 100%;
+    height: 100%;
+}
+
+body div.verdefast {
+    margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 4px 4px 12px var(--oscuro);
+}
+
+main {
+    background-color: var(--gris-800);
+    padding: 30px;
+    border-radius: 20px;
+    min-height: fit-content;
+    width: 85%;
+    max-width: 90%;
+    text-align: center;
+    filter: drop-shadow(0 0 12px var(--oscuro));
+}
+
+main > h1 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+main div.inputs {
+    margin-top: 20px;
+}
+
+main div.botones {
+    display: flex;
+    justify-content: center;
+}
+
+a.reg-clave {
+    color: var(--gris);
+    margin-top: 10px;
+    padding: 4px;
+    font-size: 14px;
+    display: block;
+}
+
+body > a.reg-usuario {
+    margin-top: 20px;
+}
+
+a#rg {
+    display: none;
+}
+
+@media (640px <= width <= 960px) {
+    body {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .fast {
+        margin-top: -10%;
+    }
+
+    div.verdefast {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        height: fit-content;
+        width: 60vw;
+        max-width: inherit;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main div.inputs {
+        margin-top: 0;
+    }
+
+    main div.titulo-inputs {
+        display: flex;
+        align-items: center;
+    }
+    
+    main div.botones {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    a.iniciar-sesion, a#rg {
+        width: 46%;
+    }
+    
+    a.reg-usuario {
+        display: none;
+    }
+
+    a#rg {
+        display: block;
+    }
+}
+
+@media (960px <= width) {
+    main {
+        height: fit-content;
+        min-width: 28vw;
+        width: fit-content;
+        max-width: inherit;
+    }
+
+    a#rg {
+        display: none;
+    }
+}

@@ -1,0 +1,125 @@
+@import url("/assets/css/common/custom.css");
+
+/* CSS Reset */
+* { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { min-height: 100dvh; }
+input, button, textarea, select { font: inherit; }
+
+p { text-wrap: pretty; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+
+img, video, svg { max-width: 100%; height: auto; }
+
+/* Iconos de Material Design */
+.material-symbols-outlined {
+    color: #eee;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' -25,
+    'opsz' 24
+}
+
+/* Colores basados en Material Design */
+:root {
+    /* Colores de acento */
+	--primario-50: #e9f7e8;
+	--primario-100: #cbeac6;
+	--primario-200: #a9dda1;
+	--primario-300: #86d07b;
+	--primario-400: #6ac65c;
+	--primario-500: #50bb3d;
+	--primario: var(--primario-500);
+	--primario-600: #46ac34;
+	--primario-700: #399929;
+	--primario-800: #2c881d;
+	--primario-900: #0e6904;
+
+    /* Colores adicionales */
+	--alt-1-50: #f2f7e7;
+	--alt-1-100: #ddeac4;
+	--alt-1-200: #c7dc9f;
+	--alt-1-300: #b1cf78;
+	--alt-1-400: #9fc55b;
+	--alt-1-500: #8fbb3d;
+	--alt-1: var(--alt-1-500);
+	--alt-1-600: #80ab35;
+	--alt-1-700: #6b982c;
+	--alt-1-800: #588423;
+	--alt-1-900: #356312;
+	--alt-2-50: #e4f5e9;
+	--alt-2-100: #bfe6c9;
+	--alt-2-200: #95d6a7;
+	--alt-2-300: #66c783;
+	--alt-2-400: #3dbb69;
+	--alt-2: var(--alt-2-400);
+	--alt-2-500: #00af4e;
+	--alt-2-600: #00a045;
+	--alt-2-700: #008e39;
+	--alt-2-800: #007d2e;
+	--alt-2-900: #005d1b;
+
+    /* Colores de notificación */
+    --error-50: #ffebee;
+	--error-100: #ffcdd2;
+	--error-200: #ef9a9a;
+	--error-300: #e57373;
+	--error-400: #ef5350;
+	--error-500: #f44336;
+	--error: var(--error-500);
+	--error-600: #e53935;
+	--error-700: #d32f2f;
+	--error-800: #c62828;
+	--error-900: #b71b1c;
+    --ok-50: #e8f5e9;
+	--ok-100: #c8e6c9;
+	--ok-200: #a5d6a7;
+	--ok-300: #81c784;
+	--ok-400: #66bb69;
+	--ok-500: #4caf4f;
+	--ok: var(--ok-500);
+	--ok-600: #43a046;
+	--ok-700: #388e3b;
+	--ok-800: #2e7d31;
+	--ok-900: #1b5e1f;
+    --warn-50: #fffde7;
+	--warn-100: #fff9c4;
+	--warn-200: #fff59d;
+	--warn-300: #fef075;
+	--warn-400: #fceb55;
+	--warn-500: #ffeb3b;
+	--warn: var(--warn-500);
+	--warn-600: #fdd835;
+	--warn-700: #fbc02d;
+	--warn-800: #f9a825;
+	--warn-900: #f57f16;   
+    --info-50: #e3f2fd;
+	--info-100: #bbdefb;
+	--info-200: #90c9f9;
+	--info-300: #63b4f6;
+	--info-400: #42a4f5;
+	--info-500: #2194f3;
+	--info: var(--info-500);
+	--info-600: #1f87e5;
+	--info-700: #1a75d2;
+	--info-800: #1764c0;
+	--info-900: #1045a1;
+	--gris-50: #fafafa;
+	--gris-100: #f5f5f5;
+	--gris-200: #eeeeee;
+	--gris-300: #e0e0e0;
+	--gris-400: #bdbdbd;
+	--gris-500: #9e9e9e;
+	--gris: var(--gris-500);
+	--gris-600: #757575;
+	--gris-700: #616161;
+	--gris-800: #424242;
+	--gris-900: #212121;
+	--oscuro: #101010;
+
+	/* Colores personalizados */
+	--oscuro-t: rgba(8, 8, 8, 0.5);
+	--oscuro-t-h: rgba(80, 80, 80, 0.5);
+}
