@@ -3,11 +3,9 @@
 <link rel="stylesheet" href="/assets/css/modules/modal_panel.css">
 <script src="/assets/js/modal_panel.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <?php include '../layouts/modules/header.php'; ?>
-
 <title>VerdeFast - Panel de Control</title>
 </head>
+<?php include '../layouts/modules/header.php'; ?>
 <script>
     const isLocal = location.hostname === 'localhost' || location.hostname.startsWith('192.168');
     const BASE_URL_BACKEND = isLocal
@@ -120,49 +118,23 @@
                 <div class="papa-icon-container" id="sembradioIcono">
                     <p style="font-size: 100px;">🥔</p>
                 </div>
-
             </div>
-            <div class="fenologia-card">
+        </div>   
+        
+        <div class="fenologia-card">
             <h2 class="fenologia-title">Fenología del cultivo</h2>
             <canvas id="fenologiaChart" width="400" height="150"></canvas>
         </div>
 
-        </div>
         <div class="bottom-grid">
             <div class="pronostico-card">
             <h2 class="pronostico-title">Pronóstico de producción</h2>
             <p class="pronostico-subtitle">80 Piezas en la siembra</p>
-            <div id="grafica-container" style="
-            position: relative;
-            width: 360px;
-            height: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        ">
-            <canvas id="graficaPastel" style="
-                position: absolute;
-                top: 50%;
-                left: 73%;
-                transform: translate(-50%, -50%);
-                width: 100%;
-                height: 100%;
-            "></canvas>
-            <div id="porcentaje" style="
-                position: absolute;
-                top: 50%;
-                left: 73%;
-                transform: translate(-50%, -50%);
-                color: black;
-                font-size: 20px;
-                font-weight: bold;
-            ">0%</div>
-        </div>
-        </div>
-
-
-
-
+            <div class="grafica-container" id="grafica-container">
+                <canvas class="graficaPastel" id="graficaPastel"></canvas>
+                <div class="porcentaje" id="porcentaje">0%</div>
+            </div>
+</div>
             
             <div class="tamano-card">
                 <h2 class="tamano-title">Tamaño de la planta</h2>
