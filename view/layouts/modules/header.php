@@ -52,7 +52,7 @@
                     </li>
                 <?php elseif ($_SESSION['rol'] === 'administrador'): ?>
                     <li>
-                        <a href="/view/admin/registro_tecnico.php" class="a nav-item">
+                        <a href="/view/form/registrar_usuario.php" class="a nav-item">
                             <span class="material-symbols-outlined">admin_panel_settings</span>
                             Registro Técnico
                         </a>

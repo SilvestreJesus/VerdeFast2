@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         switch ($rol) {
             case 'administrador':
-                header('Location: /view/admin/registro_tecnico.php');
+                header('Location: /view/form/registrar_usuario.php');
                 break;
             case 'cliente':
                 header('Location: /view/main/panel.php');
