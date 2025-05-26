@@ -6,57 +6,68 @@
 <title>VerdeFast - Panel de Control</title>
 </head>
 <?php include '../layouts/modules/header.php'; ?>
-<script>
-    const isLocal = location.hostname === 'localhost' || location.hostname.startsWith('192.168');
-    const BASE_URL_BACKEND = isLocal
-        ? 'http://localhost:9400'
-        : ' https://dd9a-2806-370-4220-36fd-9f3-ef57-a66d-a9d5.ngrok-free.app';
+<?php $config = require __DIR__ . '/../../dispositivo.php';?>
 
-    const BASE_URL_SENSORES = isLocal
-        ? 'http://192.168.188.147'
-        : ' https://dd9a-2806-370-4220-36fd-9f3-ef57-a66d-a9d5.ngrok-free.app';
+<script>
+    
+    const BASE_URL_BACKEND = "<?php echo $config['local_api']; ?>";
+    const BASE_URL_SENSORES = "<?php echo $config['esp32']; ?>";
+
 
     function actualizarSensores() {
-        fetch(`${BASE_URL_SENSORES}/sensores`)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Datos sensores:", data);
-                const humedad = parseFloat(data.humedadSuelo);
+    fetch("/api/sensores.php")
+
+        .then(response => response.json())
+        .then(data => {
+            console.log("Datos sensores crudos:", data);
+
+            // Validar y mostrar temperatura
+            if (data.temperatura !== undefined) {
                 document.getElementById('temperatura').textContent = data.temperatura + " °C";
-                document.getElementById('humedad').textContent = humedad + "%";
-                document.getElementById('ph').textContent = data.ph.toFixed(2);
+            } else {
+                document.getElementById('temperatura').textContent = "N/D";
+            }
 
-                const riegoAuto = document.getElementById('riegoauto');
-                const estadoRiego = document.getElementById('estado-riego');
+            // Validar y mostrar humedad del suelo
+            if (data.humedadSuelo !== undefined) {
+                document.getElementById('humedad').textContent = data.humedadSuelo + " %";
+            } else {
+                document.getElementById('humedad').textContent = "N/D";
+            }
 
-                if (riegoAuto && riegoAuto.checked) {
-                    const accion = humedad < 12 ? 'activar_riego' : 'desactivar_riego';
-                    fetch(`${BASE_URL_BACKEND}/view/extra/configuracion.php?accion=${accion}`)
-                        .then(response => response.text())
-                        .then(data => {
-                            console.log(`Auto-riego (${accion}):`, data);
-                            estadoRiego.textContent = `Riego automático ${accion === 'activar_riego' ? 'ACTIVADO' : 'DESACTIVADO'}`;
-                            estadoRiego.style.color = accion === 'activar_riego' ? 'green' : 'gray';
-                        })
-                        .catch(error => console.error(`Error al ${accion.replace('_', ' ')}:`, error));
-                }
-            })
-            .catch(error => console.error('Error al obtener los datos de los sensores:', error));
-    }
+            // Validar y mostrar pH
+            if (data.ph !== undefined) {
+                document.getElementById('ph').textContent = parseFloat(data.ph).toFixed(2);
+            } else {
+                document.getElementById('ph').textContent = "N/D";
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos de los sensores:', error);
+            document.getElementById('temperatura').textContent = "Error";
+            document.getElementById('humedad').textContent = "Error";
+            document.getElementById('ph').textContent = "Error";
+        });
+}
+
+
+
 
     function actualizarFechaHora() {
-        const ahora = new Date();
-        const horas = ahora.getHours().toString().padStart(2, '0');
-        const minutos = ahora.getMinutes().toString().padStart(2, '0');
-        const ampm = horas >= 12 ? 'pm' : 'am';
-        const hora12 = horas % 12 || 12;
-        const dia = ahora.getDate().toString().padStart(2, '0');
-        const mes = (ahora.getMonth() + 1).toString().padStart(2, '0');
-        const anio = ahora.getFullYear();
+    const ahora = new Date();
+    const horas = ahora.getHours();
+    const minutos = ahora.getMinutes().toString().padStart(2, '0');
+    const segundos = ahora.getSeconds().toString().padStart(2, '0');
+    const ampm = horas >= 12 ? 'pm' : 'am';
+    const hora12 = (horas % 12 || 12).toString().padStart(2, '0');
+    const dia = ahora.getDate().toString().padStart(2, '0');
+    const mes = (ahora.getMonth() + 1).toString().padStart(2, '0');
+    const anio = ahora.getFullYear();
 
-        const fechaHoraTexto = `${hora12}:${minutos} ${ampm}        ${dia}/${mes}/${anio}`;
-        document.querySelector('.date-time').textContent = fechaHoraTexto;
+    const fechaHoraTexto = `${hora12}:${minutos}:${segundos} ${ampm}    ${dia}/${mes}/${anio}`;
+    document.querySelector('.date-time').textContent = fechaHoraTexto;
     }
+
 
     window.onload = function () {
         actualizarSensores();

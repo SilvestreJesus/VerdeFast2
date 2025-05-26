@@ -17,21 +17,30 @@ class ModeloUsuarios {
 
     // Guarda una operación (función anónima) tanto en local como en la nube
     private function guardarEnAmbos(callable $operacion) {
-        try { $operacion($this->redisLocal); } catch (Exception $e) {}
-        try { $operacion($this->redisNube); } catch (Exception $e) {}
+        foreach (['local' => $this->redisLocal, 'nube' => $this->redisNube] as $nombre => $redis) {
+            try {
+                $operacion($redis);
+            } catch (Exception $e) {
+                error_log("Error en Redis $nombre: " . $e->getMessage());
+            }
+        }
     }
+    
 
     // Verifica si ya existe un correo registrado
     private function correoExistente(string $correo): bool {
-        $ids = $this->redisLocal->sMembers('usuarios'); // obtiene todos los IDs de usuarios
-        foreach ($ids as $id) {
-            $usuario = $this->redisLocal->hGetAll("usuario:$id"); // obtiene los datos del usuario
-            if (isset($usuario['correo']) && $usuario['correo'] == $correo) {
-                return true; // correo ya registrado
+        foreach ([$this->redisLocal, $this->redisNube] as $redis) {
+            $ids = $redis->sMembers('usuarios');
+            foreach ($ids as $id) {
+                $usuario = $redis->hGetAll("usuario:$id");
+                if (isset($usuario['correo']) && $usuario['correo'] === $correo) {
+                    return true;
+                }
             }
         }
         return false;
     }
+    
 
     // Crea un nuevo usuario y devuelve su ID (o -1 si el correo ya existe)
     public function crearUsuario(string $nombre, string $apellidos, string $correo, string $pass, string $telefono, string $genero, string $fecha_nacimiento, string $domicilio,string $rol): int {
@@ -115,5 +124,36 @@ public function obtenerUsuarioPorCorreo(string $correo): ?array {
     return null;
 }
 
+
+public function obtenerUsuarioPorCorreoYTelefono($correo, $telefono) {
+    $usuarios = $this->redisLocal->keys('usuario:*');
+
+    foreach ($usuarios as $key) {
+        $usuario = $this->redisLocal->hGetAll($key);
+        if (
+            isset($usuario['correo'], $usuario['telefono']) &&
+            $usuario['correo'] === $correo &&
+            $usuario['telefono'] === $telefono
+        ) {
+            return [
+                'id' => $usuario['id'] ?? null,
+                'nombre' => $usuario['nombre'] ?? ''
+            ];
+        }
+    }
+    return null;
 }
+
+
+public function autenticar(string $correo, string $pass): ?array {
+    $usuario = $this->obtenerUsuarioPorCorreo($correo);
+    if ($usuario && password_verify($pass, $usuario['pass_hash'])) {
+        return $usuario;
+    }
+    return null;
+}
+
+}
+
+
 ?>

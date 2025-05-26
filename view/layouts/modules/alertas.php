@@ -9,9 +9,14 @@
         <p>Sesión cerrada correctamente</p>
     </article>
 <?php elseif (isset($_GET['ok']) && $_GET['ok'] == 3): ?>
-    <article id="ok2" class="ok">
+    <article id="ok3" class="ok">
         <span class="material-symbols-outlined">check</span>
         <p>Cuenta creada con éxito</p>
+    </article>
+<?php elseif (isset($_GET['ok']) && $_GET['ok'] == 4): ?>
+    <article id="ok4" class="ok">
+        <span class="material-symbols-outlined">check</span>
+        <p>Planta registrada</p>
     </article>
 <?php elseif (isset($_GET['error']) && $_GET['error'] == 1): ?>
     <article id="error1" class="error">
@@ -23,6 +28,12 @@
         <span class="material-symbols-outlined">block</span>
         <p>Correo o contraseña incorrectos</p>
     </article>
+    <?php elseif (isset($_GET['error']) && $_GET['error'] == 3): ?>
+    <article id="error3" class="error">
+        <span class="material-symbols-outlined">block</span>
+        <p>No se encontro</p>
+    </article>
+
 <?php elseif (isset($_GET['info']) && $_GET['info'] == 1): ?>
     <article id="info1" class="info">
         <span class="material-symbols-outlined">info</span>

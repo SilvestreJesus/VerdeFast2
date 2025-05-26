@@ -33,7 +33,7 @@ $usuario = $controlador->ver($_SESSION['usuario_id']);
 
 <main class="registro-container">
     <div class="icon-container">
-        <img src="/assets/img/icono.png" alt="Icono" class="icon">
+    <span class="material-symbols-outlined deg-primario" style="font-size: 100px;">id_card</span>
     </div>
 
     <form class="formulario" action="/controller/crud/registrar_usuario.php" method="POST">

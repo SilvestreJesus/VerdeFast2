@@ -33,19 +33,19 @@
                     </li>
                 <?php elseif ($_SESSION['rol'] === 'tecnico'): ?>
                     <li>
-                        <a href="/view/tecnico/panel.php" class="a nav-item">
+                        <a href="/view/tecnico/registro_planta.php" class="a nav-item">
                             <span class="material-symbols-outlined">dashboard</span>
                             Panel Técnico
                         </a>
                     </li>
                     <li>
-                        <a href="/view/tecnico/bitacoras.php" class="a nav-item">
+                        <a href="/view/tecnico/soporte.php" class="a nav-item">
                             <span class="material-symbols-outlined">edit_note</span>
-                            Bitácoras
+                            Soporte
                         </a>
                     </li>
                     <li>
-                        <a href="/view/tecnico/perfil.php" class="a nav-item">
+                        <a href="/view/main/perfil.php" class="a nav-item">
                             <span class="material-symbols-outlined">person</span>
                             Perfil
                         </a>

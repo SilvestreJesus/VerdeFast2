@@ -1,12 +1,14 @@
+
 <?php include '../layouts/default/head.php'; ?>
     <title>VerdeFast - Panel de Control</title>
     <link rel="stylesheet" href="/assets/css/extra/configuracion.css">
+    
 </head>
 <body>
 <?php include '../layouts/modules/alertas.php'; ?>
 <?php include '../layouts/modules/header.php'; ?>
+
 <?php
-// No necesitas session_start() aquí si ya está en header.php
 
 // Inicializar variables de estado según $_SESSION
 $riegoEstado = isset($_SESSION['riego_estado']) && $_SESSION['riego_estado'] ? 'checked' : '';
@@ -15,8 +17,10 @@ $riegoAutoEstado = isset($_SESSION['riego_auto']) && $_SESSION['riego_auto'] ? '
 $bioelAutoEstado = isset($_SESSION['bioel_auto']) && $_SESSION['bioel_auto'] ? 'checked' : '';
 
 if (isset($_GET['accion'])) {
+    $config = require __DIR__ . '/../../dispositivo.php';
+
     $accion = $_GET['accion'];
-    $esp32 = "http://192.168.188.147";
+    $esp32 = $config['esp32'];
     $respuesta = "";
 
     switch ($accion) {
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('riegoauto').addEventListener('change', function () {
         const accion = this.checked ? 'activar_riegoauto' : 'desactivar_riegoauto';
-        fetch(`/view/extra/configuracion.php?accion=${accion}`);
+        fetch(/view/extra/configuracion.php?accion=${accion});
     });
 });
 </script>
@@ -125,34 +129,39 @@ document.addEventListener('DOMContentLoaded', () => {
 </main>
 
 <script>
+const URLS = {
+    ngrok: "<?= $config['ngrok'] ?>",
+    local: "<?= $config['local_api'] ?>",
+};
+
 const url = '/view/extra/configuracion.php?accion=';
 
-document.getElementById('riego').addEventListener('change', function() {
+document.getElementById('riego').addEventListener('change', function () {
     const accion = this.checked ? "activar_riego" : "desactivar_riego";
-    
-    fetch(' https://dd9a-2806-370-4220-36fd-9f3-ef57-a66d-a9d5.ngrok-free.app' + url + accion)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
 
-    fetch('http://localhost:9400' + url + accion)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+    fetch(URLS.ngrok + url + accion)
+        .then(res => res.text())
+        .then(console.log)
+        .catch(console.error);
+
+    fetch(URLS.local + url + accion)
+        .then(res => res.text())
+        .then(console.log)
+        .catch(console.error);
 });
 
-document.getElementById('bioel').addEventListener('change', function() {
+document.getElementById('bioel').addEventListener('change', function () {
     const accion = this.checked ? "activar_pulsos" : "desactivar_pulsos";
-    
-    fetch(' https://dd9a-2806-370-4220-36fd-9f3-ef57-a66d-a9d5.ngrok-free.app' + url + accion)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
 
-    fetch(' https://dd9a-2806-370-4220-36fd-9f3-ef57-a66d-a9d5.ngrok-free.app' + url + accion)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+    fetch(URLS.ngrok + url + accion)
+        .then(res => res.text())
+        .then(console.log)
+        .catch(console.error);
+
+    fetch(URLS.local + url + accion)
+        .then(res => res.text())
+        .then(console.log)
+        .catch(console.error);
 });
 </script>
 

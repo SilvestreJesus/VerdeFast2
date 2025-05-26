@@ -22,7 +22,10 @@ if ($isAdmin) {
 <main class="registro-container">
     <div class="titulo">
         <h1 class="titulo"><?= $isAdmin ? 'Añadir técnico' : 'Crea una nueva cuenta' ?></h1>
-        <span class="material-symbols-outlined deg-primario">account_circle</span>
+        <span class="material-symbols-outlined deg-primario">
+            <?= $isAdmin ? 'engineering' : 'account_circle' ?>
+        </span>
+
     </div>
 
     <form class="formulario" action="/controller/registrar_usuario.php" method="POST">
